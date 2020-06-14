@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <i class="fa fa-snowflake-o" style="font-size:33px;color:green"></i>
-  <a class="navbar-brand ml-2" href="#">Social Net</a>
+  <a class="navbar-brand ml-2" [routerLink]="['/home']">Social Net</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -13,15 +13,23 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
  
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Matchs</a>
+    <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/members']">Matchs</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">List</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/list']" >List</a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/messages']">Messages</a>
+      </li>
+    </ul>
+    <ul *ngIf="!loggedIn()" class="navbar-nav mr-auto"  routerLinkActive="active">
       <li class="nav-item">
-        <a class="nav-link" href="#">Messagess</a>
+        <a class="nav-link active"[routerLink]="['/home']"  >Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/about']">About</a>
       </li>
     </ul>
 
